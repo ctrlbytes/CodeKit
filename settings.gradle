@@ -1,0 +1,3 @@
+include ':codekit'
+include ':app'
+rootProject.name = "CodeKit"
