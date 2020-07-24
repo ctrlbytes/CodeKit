@@ -17,5 +17,5 @@ repositories {
 2. Add the dependency
 
 ```groovy
-implementation 'com.github.ctrlbytes:CodeKit:0.1.0'
+implementation 'com.github.ctrlbytes:CodeKit:0.1.1'
 ```
