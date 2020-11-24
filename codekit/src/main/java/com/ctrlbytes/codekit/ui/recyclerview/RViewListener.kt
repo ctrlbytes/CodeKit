@@ -22,14 +22,11 @@
  * SOFTWARE.
  *
  */
-package com.ctrlbytes.codekit.ktx
+package com.ctrlbytes.codekit.ui.recyclerview
 
-import com.google.android.material.textfield.TextInputLayout
+import android.view.View
 
-fun TextInputLayout.setValue(value: String?) = editText!!.setText(value)
-
-fun TextInputLayout.getValue(): String = editText!!.text.toString()
-
-fun TextInputLayout.clear() {
-    editText!!.text = null
+interface RViewListener<T> {
+    fun onItemClick(position: Int, item: T, mView: View?)
+    fun onItemLongClick(position: Int, item: T, mView: View?)
 }
