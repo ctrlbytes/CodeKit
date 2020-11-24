@@ -17,16 +17,11 @@ repositories {
 2. Add the dependency
 
 ```groovy
-implementation 'com.github.ctrlbytes:CodeKit:0.1.2'
+implementation 'com.github.ctrlbytes:CodeKit:0.1.3'
 ```
 
 ## Usage
 
-### ScreenFlow
-
-```java
-ScreenFlow.from(fragment|activity|context).to(AnotherActivity.class);
-```
 ### ConnectivityUtils
 
 ```java
@@ -37,14 +32,37 @@ ConnectivityUtils.isWiFiOn(context);
 
 ```
 
-### YLog
+### AppsInDevice
 
 ```java
+AppsInDevice.isInstalled(context, packageName)
+```
 
-//Init in start of the Application
-YLog("YOUR_APP_TAG", enabled|disable);
+### Context KTX
 
-//Use wherever you want
-YLog("SCREEN_TAG", "LOG_MESSAGE");
+```kotlin
+launchActivity(activityClass) { intent ->
+    putExtra()
+}
 
+openUrl(urlString)
+
+toast(stringRes|string)
+toast(stringRes|string, LENGTH_SHORT)
+
+openAppInPlayStore() // will open current app
+openAppInPlayStore(appPackageName) // will open the specified package
+```
+### Fragment KTX
+
+```kotlin
+toast(stringRes|string)
+toast(stringRes|string, LENGTH_SHORT)
+```
+
+### TextInputLayout
+```kotlin
+getValue()
+setValue(string)
+clear()
 ```
