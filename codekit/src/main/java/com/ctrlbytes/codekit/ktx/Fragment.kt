@@ -22,11 +22,14 @@
  * SOFTWARE.
  *
  */
-package com.ctrlbytes.codekit.ui.recyclerview
 
-import android.view.View
+package com.ctrlbytes.codekit.ktx
 
-interface RViewListener<T> {
-    fun onItemClick(position: Int, item: T, mView: View)
-    fun onItemLongClick(position: Int, item: T, mView: View)
-}
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
+import androidx.fragment.app.Fragment
+
+
+fun Fragment.toast(message: String, duration: Int = LENGTH_SHORT) = Toast.makeText(requireContext(), message, duration).show()
+
+fun Fragment.toast(message: Int, duration: Int = LENGTH_SHORT) = Toast.makeText(requireContext(), message, duration).show()

@@ -29,6 +29,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.widget.Toast
 import androidx.core.net.toUri
 
 fun Context.openUrl(url: String) {
@@ -54,3 +55,13 @@ fun Context.openAppInPlayStore(targetPackage: String? = null) {
         startActivity(Intent(Intent.ACTION_VIEW, "http://play.google.com/store/apps/details?id=$targetPackageName".toUri()))
     }
 }
+
+fun <T> Context.launchActivity(act: Class<T>, custom: Intent.() -> Unit = {}) {
+    val intent = Intent(this, act)
+    intent.apply(custom)
+    startActivity(intent)
+}
+
+fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, message, duration).show()
+
+fun Context.toast(message: Int, duration: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, message, duration).show()

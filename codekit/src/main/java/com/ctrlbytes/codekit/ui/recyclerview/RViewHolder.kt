@@ -28,6 +28,7 @@ import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
+@Suppress("unused")
 abstract class RViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private fun context(): Context {

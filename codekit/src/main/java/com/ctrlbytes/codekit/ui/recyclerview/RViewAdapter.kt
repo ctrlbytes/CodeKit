@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 @Suppress("unused")
-abstract class RViewAdapter<T, GVH : RViewHolder<T>> : RecyclerView.Adapter<GVH>() {
+abstract class RViewAdapter<T, RVH : RViewHolder<T>> : RecyclerView.Adapter<RVH>() {
 
     private var items: MutableList<T> = ArrayList()
     private var mRViewListener: RViewListener<T>? = null
@@ -82,15 +82,15 @@ abstract class RViewAdapter<T, GVH : RViewHolder<T>> : RecyclerView.Adapter<GVH>
         notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: GVH, position: Int) {
+    override fun onBindViewHolder(holder: RVH, position: Int) {
         val item = items[position]
         holder.onBind(item)
         mRViewListener?.let {
             holder.itemView.setOnClickListener { v: View ->
-                it.onItemClick(holder.absoluteAdapterPosition, item, v)
+                it.onItemClick(position, item, v)
             }
             holder.itemView.setOnLongClickListener { v: View ->
-                it.onItemLongClick(holder.absoluteAdapterPosition, item, v)
+                it.onItemLongClick(position, item, v)
                 true
             }
         }
