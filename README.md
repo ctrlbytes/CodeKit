@@ -66,3 +66,10 @@ getValue()
 setValue(string)
 clear()
 ```
+
+### View
+```kotlin
+hide() // visibility gone by default
+hide(VISIBLE|GONE) // or specify
+show() // visibility visible
+```

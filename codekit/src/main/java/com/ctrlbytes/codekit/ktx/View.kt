@@ -33,6 +33,6 @@ fun View.show() {
     visibility = VISIBLE
 }
 
-fun View.hide() {
-    visibility = GONE
+fun View.hide(v: Int = GONE) {
+    visibility = v
 }
