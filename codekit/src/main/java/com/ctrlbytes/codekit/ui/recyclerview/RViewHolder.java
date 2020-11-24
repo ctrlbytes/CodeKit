@@ -32,7 +32,6 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-@SuppressWarnings("unused")
 public abstract class RViewHolder<T> extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
     private Callback mCallback;

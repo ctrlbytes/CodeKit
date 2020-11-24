@@ -25,56 +25,26 @@
 
 package com.ctrlbytes.codekit.utils;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
-import android.net.Uri;
-import android.os.Build;
+
+import androidx.annotation.StringRes;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
-
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings("unused")
 public class AppsInDevice {
 
     public static boolean isInstalled(Context context, String packageName) {
         Intent appIntent = new Intent(Intent.ACTION_MAIN, null).addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> resolveInfoList = context
-                .getPackageManager()
-                .queryIntentActivities(appIntent, 0);
+        List<ResolveInfo> resolveInfoList = context.getPackageManager().queryIntentActivities(appIntent, 0);
         for (ResolveInfo resolveInfo : resolveInfoList) {
             if (resolveInfo.activityInfo.packageName.equals(packageName)) {
                 return true;
             }
         }
         return false;
-    }
-
-    public static void openInPlayStore(Context mActivity) {
-        openInPlayStore(mActivity, mActivity.getPackageName());
-    }
-
-    public static void openInPlayStore(@NonNull Context mContext, String PackageName) {
-        Uri uri = Uri.parse("market://details?id=" + PackageName);
-        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        } else {
-            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        }
-        try {
-            mContext.startActivity(goToMarket);
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-            mContext.startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + PackageName)));
-        }
     }
 
     public static void sharePlainText(Context context, @StringRes int shareTitle, String text) {

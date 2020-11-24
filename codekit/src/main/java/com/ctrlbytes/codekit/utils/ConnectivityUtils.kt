@@ -22,28 +22,22 @@
  * SOFTWARE.
  *
  */
+package com.ctrlbytes.codekit.utils
 
-package com.ctrlbytes.codekit.utils;
+import android.content.Context
+import android.net.ConnectivityManager
+import androidx.annotation.RequiresPermission
 
-
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresPermission;
-
-public class ConnectivityUtils {
-
+object ConnectivityUtils {
     /**
      * To get ConnectivityManager
      *
      * @param mContext Context to get ConnectivityManager
      * @return ConnectivityManager
      */
-    @RequiresPermission(allOf = {"android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"})
-    private static ConnectivityManager getConnectivityManager(@NonNull Context mContext) {
-        return (ConnectivityManager) mContext.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+    @RequiresPermission(allOf = ["android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"])
+    private fun getConnectivityManager(mContext: Context): ConnectivityManager {
+        return mContext.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 
     /**
@@ -52,10 +46,11 @@ public class ConnectivityUtils {
      * @param mContext Context to get ConnectivityManager
      * @return true if internet connection is on or false otherwise
      */
-    @RequiresPermission(allOf = {"android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"})
-    public static boolean isInternetOn(@NonNull Context mContext) {
-        NetworkInfo activeNetwork = getConnectivityManager(mContext).getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    @JvmStatic
+    @RequiresPermission(allOf = ["android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"])
+    fun isInternetOn(mContext: Context): Boolean {
+        val activeNetwork = getConnectivityManager(mContext).activeNetworkInfo
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting
     }
 
     /**
@@ -64,10 +59,11 @@ public class ConnectivityUtils {
      * @param mContext Context to get ConnectivityManager
      * @return true if internet connection is wifi or false otherwise
      */
-    @RequiresPermission(allOf = {"android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"})
-    public static boolean isWiFiOn(@NonNull Context mContext) {
-        NetworkInfo activeNetwork = getConnectivityManager(mContext).getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
+    @JvmStatic
+    @RequiresPermission(allOf = ["android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"])
+    fun isWiFiOn(mContext: Context): Boolean {
+        val activeNetwork = getConnectivityManager(mContext).activeNetworkInfo
+        return activeNetwork != null && activeNetwork.type == ConnectivityManager.TYPE_WIFI
     }
 
     /**
@@ -76,9 +72,10 @@ public class ConnectivityUtils {
      * @param mContext Context to get ConnectivityManager
      * @return true if internet connection is mobile data or false otherwise
      */
-    @RequiresPermission(allOf = {"android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"})
-    public static boolean isMobileDataOn(@NonNull Context mContext) {
-        NetworkInfo activeNetwork = getConnectivityManager(mContext).getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE;
+    @JvmStatic
+    @RequiresPermission(allOf = ["android.permission.INTERNET", "android.permission.ACCESS_NETWORK_STATE"])
+    fun isMobileDataOn(mContext: Context): Boolean {
+        val activeNetwork = getConnectivityManager(mContext).activeNetworkInfo
+        return activeNetwork != null && activeNetwork.type == ConnectivityManager.TYPE_MOBILE
     }
 }

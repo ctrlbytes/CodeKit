@@ -22,44 +22,10 @@
  * SOFTWARE.
  *
  */
+package com.ctrlbytes.codekit.ktx
 
-package com.ctrlbytes.codekit.ui.widgets;
+import com.google.android.material.textfield.TextInputLayout
 
-import android.content.Context;
-import android.util.AttributeSet;
+fun TextInputLayout.setValue(value: String?) = editText!!.setText(value)
 
-import com.google.android.material.textfield.TextInputEditText;
-
-/*
- *
- * Custom EditText extending {@Link TextInputEditText}
- *
- */
-@SuppressWarnings("unused")
-public class EditTextField extends TextInputEditText {
-
-    public EditTextField(Context context) {
-        super(context);
-    }
-
-    public EditTextField(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public EditTextField(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    public String getValue() {
-        return getText() != null ? getText().toString().trim() : "";
-    }
-
-    public float getValueFloat() {
-        return Float.parseFloat((!isEmpty()) ? getValue() : "0");
-    }
-
-    public boolean isEmpty() {
-        return getValue().isEmpty();
-    }
-
-}
+fun TextInputLayout.getValue(): String = editText!!.text.toString()
