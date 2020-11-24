@@ -17,14 +17,14 @@ repositories {
 2. Add the dependency
 
 ```groovy
-implementation 'com.github.ctrlbytes:CodeKit:0.1.3'
+implementation 'com.github.ctrlbytes:CodeKit:LATEST_VERSION_HERE'
 ```
 
 ## Usage
 
 ### ConnectivityUtils
 
-```java
+```kotlin
 
 ConnectivityUtils.isInternetOn(context);
 ConnectivityUtils.isMobileDataOn(context);
@@ -34,7 +34,7 @@ ConnectivityUtils.isWiFiOn(context);
 
 ### AppsInDevice
 
-```java
+```kotlin
 AppsInDevice.isInstalled(context, packageName)
 ```
 
