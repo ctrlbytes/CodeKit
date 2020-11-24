@@ -31,7 +31,7 @@ import java.util.*
 @Suppress("unused")
 abstract class RViewAdapter<T, RVH : RViewHolder<T>> : RecyclerView.Adapter<RVH>() {
 
-    private var items: MutableList<T> = ArrayList()
+    private var items: ArrayList<T> = ArrayList()
     private var mRViewListener: RViewListener<T>? = null
 
     fun getItemAt(position: Int): T {
@@ -78,7 +78,8 @@ abstract class RViewAdapter<T, RVH : RViewHolder<T>> : RecyclerView.Adapter<RVH>
     }
 
     fun setItems(mItems: MutableList<T>) {
-        items = mItems
+        items.clear()
+        items.addAll(mItems)
         notifyDataSetChanged()
     }
 
