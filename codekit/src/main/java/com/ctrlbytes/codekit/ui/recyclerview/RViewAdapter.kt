@@ -77,7 +77,7 @@ abstract class RViewAdapter<T, RVH : RViewHolder<T>> : RecyclerView.Adapter<RVH>
         return items
     }
 
-    fun setItems(mItems: MutableList<T>) {
+    fun setItems(mItems: ArrayList<T>) {
         items.clear()
         items.addAll(mItems)
         notifyDataSetChanged()
