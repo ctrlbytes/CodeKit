@@ -32,6 +32,6 @@ fun Date.toFormat(simpleDateFormat: SimpleDateFormat): String {
     return simpleDateFormat.format(this)
 }
 
-fun Date.toFormat(format: String, locale: Locale): String {
+fun Date.toFormat(format: String, locale: Locale = Locale.getDefault()): String {
     return SimpleDateFormat(format, locale).format(this)
 }

@@ -60,16 +60,23 @@ toast(stringRes|string)
 toast(stringRes|string, LENGTH_SHORT)
 ```
 
-### TextInputLayout
+### TextInputLayout KTX
 ```kotlin
 getValue()
 setValue(string)
 clear()
 ```
 
-### View
+### View KTX
 ```kotlin
 hide() // visibility gone by default
 hide(VISIBLE|GONE) // or specify
 show() // visibility visible
+```
+
+### Date KTX
+```kotlin
+format("dd-MM-yyy")
+format("dd-MM-yyy", locale)
+format(simpleDateFormat)
 ```
