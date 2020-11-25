@@ -22,24 +22,16 @@
  * SOFTWARE.
  *
  */
-package com.ctrlbytes.codekit.ui.recyclerview
 
-import android.content.Context
-import android.view.View
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
+package com.ctrlbytes.codekit.ktx
 
-abstract class RViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+import java.text.SimpleDateFormat
+import java.util.*
 
-    fun context(): Context {
-        return itemView.context
-    }
-
-    fun getString(resId: Int): String {
-        return context().getString(resId)
-    }
-
-    abstract fun onBind(item: T)
+fun Date.toFormat(simpleDateFormat: SimpleDateFormat): String {
+    return simpleDateFormat.format(this)
 }
 
-abstract class RViewBindingHolder<T, VB : ViewBinding>(binding: VB) : RViewHolder<T>(binding.root)
+fun Date.toFormat(format: String, locale: Locale): String {
+    return SimpleDateFormat(format, locale).format(this)
+}
