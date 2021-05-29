@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 CtrlBytes Technologies
+ * Copyright (c) 2021 CtrlBytes Technologies
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,7 @@
 package com.ctrlbytes.codekit.ktx
 
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 
 fun View.show() {
     visibility = VISIBLE
@@ -35,4 +34,16 @@ fun View.show() {
 
 fun View.hide(v: Int = GONE) {
     visibility = v
+}
+
+fun View.visible() {
+    visibility = VISIBLE
+}
+
+fun View.gone() {
+    visibility = GONE
+}
+
+fun View.inVisible() {
+    visibility = INVISIBLE
 }
