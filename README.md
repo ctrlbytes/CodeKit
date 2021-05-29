@@ -52,6 +52,10 @@ toast(stringRes|string, LENGTH_SHORT)
 
 openAppInPlayStore() // will open current app
 openAppInPlayStore(appPackageName) // will open the specified package
+
+runSafe {
+    // do things that may throw error but don't care about the error (error will be printed to the console)ō
+}
 ```
 ### Fragment KTX
 
@@ -79,4 +83,11 @@ show() // visibility visible
 format("dd-MM-yyy")
 format("dd-MM-yyy", locale)
 format(simpleDateFormat)
+```
+
+### Cursor KTX
+```kotlin
+val items = dbCursor.toList {
+   it.getString(0)
+}
 ```
