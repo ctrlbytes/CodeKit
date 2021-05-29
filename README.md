@@ -2,6 +2,7 @@
 
 [![](https://jitpack.io/v/ctrlbytes/CodeKit.svg)](https://jitpack.io/#ctrlbytes/CodeKit)
 [![API](https://img.shields.io/badge/API-19%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=19)
+![Android CI](https://github.com/ctrlbytes/CodeKit/actions/workflows/android.yml/badge.svg)
 
 ## Adding to your project
 
@@ -88,6 +89,6 @@ val items = dbCursor.toList {
 ### Utils KTX
 ```kotlin
 runSafe {
-    // do things that may throw error (error will be printed to the console)
+    // do things that may throw error and don't care about the error (error will be printed to the console)
 }
 ```
