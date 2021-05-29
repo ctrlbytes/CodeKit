@@ -23,7 +23,6 @@ implementation 'com.github.ctrlbytes:CodeKit:LATEST_VERSION_HERE'
 ## Usage
 
 ### ConnectivityUtils
-
 ```kotlin
 
 ConnectivityUtils.isInternetOn(context);
@@ -33,13 +32,11 @@ ConnectivityUtils.isWiFiOn(context);
 ```
 
 ### AppsInDevice
-
 ```kotlin
 AppsInDevice.isInstalled(context, packageName)
 ```
 
 ### Context KTX
-
 ```kotlin
 launchActivity(activityClass) { intent ->
     putExtra()
@@ -52,13 +49,9 @@ toast(stringRes|string, LENGTH_SHORT)
 
 openAppInPlayStore() // will open current app
 openAppInPlayStore(appPackageName) // will open the specified package
-
-runSafe {
-    // do things that may throw error but don't care about the error (error will be printed to the console)ō
-}
 ```
-### Fragment KTX
 
+### Fragment KTX
 ```kotlin
 toast(stringRes|string)
 toast(stringRes|string, LENGTH_SHORT)
@@ -89,5 +82,12 @@ format(simpleDateFormat)
 ```kotlin
 val items = dbCursor.toList {
    it.getString(0)
+}
+```
+
+### Utils KTX
+```kotlin
+runSafe {
+    // do things that may throw error (error will be printed to the console)
 }
 ```
